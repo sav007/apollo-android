@@ -1,0 +1,122 @@
+{
+  "operations": [
+    {
+      "operationName": "TestQuery",
+      "operationType": "query",
+      "variables": [
+        {
+          "name": "login",
+          "type": "String!"
+        }
+      ],
+      "source": "query TestQuery($login: String!) {\n  user(login: $login) {\n    id\n    name\n    createdAt\n    company\n    organizations(first: 10) {\n      edges {\n        cursor\n        node {\n          ...OrganizationFragment\n        }\n      }\n    }\n  }\n}",
+      "fields": [
+        {
+          "responseName": "user",
+          "fieldName": "user",
+          "type": "User",
+          "fields": [
+            {
+              "responseName": "id",
+              "fieldName": "id",
+              "type": "ID!"
+            },
+            {
+              "responseName": "name",
+              "fieldName": "name",
+              "type": "String"
+            },
+            {
+              "responseName": "createdAt",
+              "fieldName": "createdAt",
+              "type": "DateTime!"
+            },
+            {
+              "responseName": "company",
+              "fieldName": "company",
+              "type": "String"
+            },
+            {
+              "responseName": "organizations",
+              "fieldName": "organizations",
+              "type": "OrganizationConnection!",
+              "fields": [
+                {
+                  "responseName": "edges",
+                  "fieldName": "edges",
+                  "type": "[OrganizationEdge]",
+                  "fields": [
+                    {
+                      "responseName": "cursor",
+                      "fieldName": "cursor",
+                      "type": "String!"
+                    },
+                    {
+                      "responseName": "node",
+                      "fieldName": "node",
+                      "type": "Organization",
+                      "fields": [],
+                      "fragmentSpreads": [
+                        "OrganizationFragment"
+                      ],
+                      "inlineFragments": []
+                    }
+                  ],
+                  "fragmentSpreads": [],
+                  "inlineFragments": []
+                }
+              ],
+              "fragmentSpreads": [],
+              "inlineFragments": []
+            }
+          ],
+          "fragmentSpreads": [],
+          "inlineFragments": []
+        }
+      ],
+      "fragmentsReferenced": [
+        "OrganizationFragment"
+      ],
+      "filePath": "src/test/graphql/com/example/github/TestQuery.json"
+    }
+  ],
+  "fragments": [
+    {
+      "fragmentName": "OrganizationFragment",
+      "source": "fragment OrganizationFragment on Organization {\n  id\n  name\n  projectsUrl\n}",
+      "typeCondition": "Organization",
+      "fields": [
+        {
+          "responseName": "id",
+          "fieldName": "id",
+          "type": "ID!"
+        },
+        {
+          "responseName": "name",
+          "fieldName": "name",
+          "type": "String!"
+        },
+        {
+          "responseName": "projectsUrl",
+          "fieldName": "projectsUrl",
+          "type": "URI!"
+        }
+      ],
+      "fragmentSpreads": [],
+      "inlineFragments": [],
+      "fragmentsReferenced": []
+    }
+  ],
+  "typesUsed": [
+    {
+      "kind": "ScalarType",
+      "name": "DateTime",
+      "description": null
+    },
+    {
+      "kind": "ScalarType",
+      "name": "URI",
+      "description": null
+    }
+  ]
+}

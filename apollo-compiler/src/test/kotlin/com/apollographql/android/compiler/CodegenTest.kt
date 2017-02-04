@@ -70,6 +70,9 @@ class CodeGenTest(val testDir: File, val pkgName: String, val generatePOJO: Bool
       return File("src/test/graphql/com/example/").listFiles()
           .filter { it.isDirectory }
           .map {
+            if (it.name == "github") {
+              arrayOf(it, it.name, true, mapOf("DateTime" to "java.util.Date", "URI" to "java.net.URI"))
+            } else
             if (it.name == "custom_scalar_type") {
               arrayOf(it, it.name, false, mapOf("Date" to "java.util.Date", "UnsupportedType" to "java.lang.Object"))
             } else if (it.name == "pojo_custom_scalar_type") {
