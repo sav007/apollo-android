@@ -9,11 +9,9 @@ import com.apollographql.android.converter.github.fragment.OrganizationFragment;
 import com.apollographql.android.converter.github.type.CustomType;
 
 import java.io.IOException;
-import java.lang.IllegalStateException;
-import java.lang.Override;
-import java.lang.String;
 import java.util.Date;
 import java.util.List;
+
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

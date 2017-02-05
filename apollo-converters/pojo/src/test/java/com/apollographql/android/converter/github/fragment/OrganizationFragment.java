@@ -6,8 +6,8 @@ import com.apollographql.android.api.graphql.ResponseReader;
 import com.apollographql.android.converter.github.type.CustomType;
 
 import java.io.IOException;
-import java.lang.String;
 import java.net.URI;
+
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
 

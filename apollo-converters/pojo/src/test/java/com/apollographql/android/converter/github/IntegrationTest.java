@@ -83,7 +83,7 @@ public class IntegrationTest {
         .baseUrl(server.url("/"))
         .addConverterFactory(new ApolloConverterFactory.Builder()
             .withResponseFieldMapper(UserWithOrganizationsQuery.Data.class,
-                new UserWithOrganizationsQuery.Data.Mapper(UserWithOrganizationsQueryDataImpl.FACTORY))
+                new UserWithOrganizationsQuery.Data.Mapper(UserWithOrganizationsQueryDataModel.FACTORY))
             .withCustomTypeAdapter(CustomType.DATETIME, dateCustomTypeAdapter)
             .withCustomTypeAdapter(CustomType.URI, uriCustomTypeAdapter)
             .build())
@@ -92,7 +92,7 @@ public class IntegrationTest {
     service = retrofit.create(Service.class);
   }
 
-  @SuppressWarnings("ConstantConditions") @Test public void allPlanetQuery() throws Exception {
+  @SuppressWarnings("ConstantConditions") @Test public void githubUserWithOrganization() throws Exception {
     server.enqueue(mockResponse("src/test/graphql/FelipeGithubUserWithOrganizationsResponse.json"));
 
     UserWithOrganizationsQuery query = new UserWithOrganizationsQuery(

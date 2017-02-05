@@ -1,7 +1,7 @@
 package com.apollographql.android.converter.github.type;
 
 import com.apollographql.android.api.graphql.ScalarType;
-import java.lang.String;
+
 import javax.annotation.Generated;
 
 @Generated("Apollo GraphQL")
