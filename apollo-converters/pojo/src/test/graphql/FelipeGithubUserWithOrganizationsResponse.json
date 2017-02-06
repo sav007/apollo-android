@@ -1,0 +1,76 @@
+{
+  "data": {
+    "user": {
+      "__typename": "User",
+      "id": "MDQ6VXNlcjE5MDY0OA==",
+      "name": "Felipe Lima",
+      "createdAt": "2010-01-27T04:11:15Z",
+      "company": "@airbnb",
+      "organizations": {
+        "__typename": "OrganizationConnection",
+        "edges": [
+          {
+            "__typename": "OrganizationEdge",
+            "cursor": "Y3Vyc29yOjY5ODQzNw==",
+            "node": {
+              "__typename": "Organization",
+              "id": "MDEyOk9yZ2FuaXphdGlvbjY5ODQzNw==",
+              "name": "Airbnb",
+              "projectsUrl": "https://github.com/orgs/airbnb/projects"
+            }
+          },
+          {
+            "__typename": "OrganizationEdge",
+            "cursor": "Y3Vyc29yOjIwOTk1NjY=",
+            "node": {
+              "__typename": "Organization",
+              "id": "MDEyOk9yZ2FuaXphdGlvbjIwOTk1NjY=",
+              "name": "Noite Hoje",
+              "projectsUrl": "https://github.com/orgs/noitehoje/projects"
+            }
+          },
+          {
+            "__typename": "OrganizationEdge",
+            "cursor": "Y3Vyc29yOjU4MDE0NzA=",
+            "node": {
+              "__typename": "Organization",
+              "id": "MDEyOk9yZ2FuaXphdGlvbjU4MDE0NzA=",
+              "name": "Compraê",
+              "projectsUrl": "https://github.com/orgs/comprae/projects"
+            }
+          },
+          {
+            "__typename": "OrganizationEdge",
+            "cursor": "Y3Vyc29yOjc3MTgzMDg=",
+            "node": {
+              "__typename": "Organization",
+              "id": "MDEyOk9yZ2FuaXphdGlvbjc3MTgzMDg=",
+              "name": "gdgpoa",
+              "projectsUrl": "https://github.com/orgs/gdgpoa/projects"
+            }
+          },
+          {
+            "__typename": "OrganizationEdge",
+            "cursor": "Y3Vyc29yOjgwOTYxNjc=",
+            "node": {
+              "__typename": "Organization",
+              "id": "MDEyOk9yZ2FuaXphdGlvbjgwOTYxNjc=",
+              "name": "DevFestSul",
+              "projectsUrl": "https://github.com/orgs/devfestsul/projects"
+            }
+          },
+          {
+            "__typename": "OrganizationEdge",
+            "cursor": "Y3Vyc29yOjEzODUzMTY2",
+            "node": {
+              "__typename": "Organization",
+              "id": "MDEyOk9yZ2FuaXphdGlvbjEzODUzMTY2",
+              "name": "EliFUT",
+              "projectsUrl": "https://github.com/orgs/EliFUT/projects"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
