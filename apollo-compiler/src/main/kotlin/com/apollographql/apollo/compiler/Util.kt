@@ -242,12 +242,12 @@ fun TypeName.isOptional(): Boolean {
   return rawType == ClassNames.OPTIONAL || rawType == ClassNames.GUAVA_OPTIONAL || rawType == ClassNames.JAVA_OPTIONAL
 }
 
-fun TypeName.unwrapOptionalType(): TypeName {
+fun TypeName.unwrapOptionalType(withoutAnnotation: Boolean = false): TypeName {
   return if (isOptional()) {
     (this as ParameterizedTypeName).typeArguments.first().annotated(Annotations.NULLABLE)
   } else {
     this
-  }
+  }.let { if (withoutAnnotation) it.withoutAnnotations() else it }
 }
 
 fun TypeName.unwrapOptionalValue(valueVarName: String, checkPresent: Boolean = true,
