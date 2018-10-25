@@ -166,6 +166,22 @@
           "type": "[[Boolean!]!]!",
           "fragmentSpreads": [],
           "inlineFragments": []
+        },
+        {
+          "responseName": "graphQlListOfListOfObjects",
+          "fieldName": "graphQlListOfListOfObjects",
+          "type": "[[SomeObject]]",
+          "fields": [
+            {
+              "responseName": "someField",
+              "fieldName": "someField",
+              "type": "Int!",
+              "fragmentSpreads": [],
+              "inlineFragments": []
+            }
+          ],
+          "fragmentSpreads": [],
+          "inlineFragments": []
         }
       ],
       "fragmentsReferenced": [],
