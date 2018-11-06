@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 public final class TestQuery implements Query<TestQuery.Data, Optional<TestQuery.Data>, Operation.Variables> {
   public static final String OPERATION_DEFINITION = "";
 
-  public static final String OPERATION_ID = null;
+  public static final String OPERATION_ID = "7824113c9abde76f3c8ffbee5d7065129bc5c47757f34dd5959d5cd16464d014";
 
   public static final String QUERY_DOCUMENT = OPERATION_DEFINITION;
 
