@@ -22,4 +22,8 @@ subprojects {
     mavenCentral()
     jcenter()
   }
+
+  tasks.withType<Test>().configureEach {
+    systemProperty("updateTestFixtures", System.getProperty("updateTestFixtures"))
+  }
 }
