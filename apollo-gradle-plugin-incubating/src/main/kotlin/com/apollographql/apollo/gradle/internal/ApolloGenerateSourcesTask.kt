@@ -136,6 +136,12 @@ abstract class ApolloGenerateSourcesTask : DefaultTask() {
       """.trimIndent())
     }
 
+    if (!generateKotlinModels.getOrElse(false) && generateAsInternal.isPresent) {
+      throw IllegalArgumentException("""
+        ApolloGraphQL: Using `generateAsInternal` does not make sense with `generateKotlinModels = false`
+      """.trimIndent())
+    }
+
     val map = files.groupBy { packageNameProvider.filePackageName(it.normalize().absolutePath) to it.nameWithoutExtension }
 
     map.values.forEach {

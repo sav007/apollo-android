@@ -40,6 +40,7 @@ class KotlinCodegenTests {
   fun `when generateAsInternal set to true - generated models are internal`() {
     val apolloConfiguration = """
       apollo {
+        generateKotlinModels = true
         generateAsInternal = true
       }
     """.trimIndent()
@@ -47,17 +48,13 @@ class KotlinCodegenTests {
         apolloConfiguration = apolloConfiguration,
         plugins = listOf(TestUtils.javaPlugin, TestUtils.kotlinJvmPlugin, TestUtils.apolloPlugin)) { dir ->
 
-      val source = TestUtils.fixturesDirectory()
-      source.child("kotlin").copyRecursively(dir.child("src", "main", "kotlin"))
-
-      TestUtils.executeTask("build", dir)
-      assertTrue(File(dir, "build/classes/kotlin/main/com/example/DroidDetailsQuery.class").isFile)
+      TestUtils.executeTask("generateApolloSources", dir)
 
       assertTrue(dir.generatedChild("main/service/com/example/DroidDetailsQuery.kt").isFile)
       assertThat(dir.generatedChild("main/service/com/example/DroidDetailsQuery.kt").readText(), CoreMatchers.containsString("internal class"))
 
       assertTrue(dir.generatedChild("main/service/com/example/type/CustomType.kt").isFile)
-      assertThat(dir.generatedChild("main/service/com/example/type/CustomType.kt").readText(), CoreMatchers.containsString("internal class"))
+      assertThat(dir.generatedChild("main/service/com/example/type/CustomType.kt").readText(), CoreMatchers.containsString("internal enum class"))
 
       assertTrue(dir.generatedChild("main/service/com/example/fragment/SpeciesInformation.kt").isFile)
       assertThat(dir.generatedChild("main/service/com/example/fragment/SpeciesInformation.kt").readText(), CoreMatchers.containsString("internal data class"))
