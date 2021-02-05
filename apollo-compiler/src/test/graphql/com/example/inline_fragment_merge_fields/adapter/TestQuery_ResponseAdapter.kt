@@ -181,12 +181,12 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
         override fun fromResponse(reader: ResponseReader, __typename: String?):
             TestQuery.Data.Hero.CharacterHero.FriendsConnection {
           return reader.run {
-            var edges: List<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge?>? = null
+            var edges: List<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges?>? = null
             while(true) {
               when (selectField(RESPONSE_FIELDS)) {
-                0 -> edges = readList<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge>(RESPONSE_FIELDS[0]) { reader ->
-                  reader.readObject<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge> { reader ->
-                    Edge.fromResponse(reader)
+                0 -> edges = readList<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges>(RESPONSE_FIELDS[0]) { reader ->
+                  reader.readObject<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges> { reader ->
+                    Edges.fromResponse(reader)
                   }
                 }
                 else -> break
@@ -202,12 +202,12 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
             value: TestQuery.Data.Hero.CharacterHero.FriendsConnection) {
           writer.writeList(RESPONSE_FIELDS[0], value.edges) { value, listItemWriter ->
             listItemWriter.writeObject { writer ->
-              Edge.toResponse(writer, value)
+              Edges.toResponse(writer, value)
             }
           }
         }
 
-        object Edge : ResponseAdapter<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge> {
+        object Edges : ResponseAdapter<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges> {
           private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
             ResponseField(
               type = ResponseField.Type.Named.Object("Character"),
@@ -219,25 +219,25 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
           )
 
           override fun fromResponse(reader: ResponseReader, __typename: String?):
-              TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge {
+              TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges {
             return reader.run {
-              var node: TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge.Node? = null
+              var node: TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges.Node? = null
               while(true) {
                 when (selectField(RESPONSE_FIELDS)) {
-                  0 -> node = readObject<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge.Node>(RESPONSE_FIELDS[0]) { reader ->
+                  0 -> node = readObject<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges.Node>(RESPONSE_FIELDS[0]) { reader ->
                     Node.fromResponse(reader)
                   }
                   else -> break
                 }
               }
-              TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge(
+              TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges(
                 node = node
               )
             }
           }
 
           override fun toResponse(writer: ResponseWriter,
-              value: TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge) {
+              value: TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges) {
             if(value.node == null) {
               writer.writeObject(RESPONSE_FIELDS[0], null)
             } else {
@@ -248,7 +248,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
           }
 
           object Node :
-              ResponseAdapter<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge.Node> {
+              ResponseAdapter<TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges.Node> {
             private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
               ResponseField(
                 type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("String")),
@@ -260,7 +260,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
             )
 
             override fun fromResponse(reader: ResponseReader, __typename: String?):
-                TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge.Node {
+                TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges.Node {
               return reader.run {
                 var name: String? = null
                 while(true) {
@@ -269,14 +269,14 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
                     else -> break
                   }
                 }
-                TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge.Node(
+                TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges.Node(
                   name = name!!
                 )
               }
             }
 
             override fun toResponse(writer: ResponseWriter,
-                value: TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edge.Node) {
+                value: TestQuery.Data.Hero.CharacterHero.FriendsConnection.Edges.Node) {
               writer.writeString(RESPONSE_FIELDS[0], value.name)
             }
           }
@@ -355,12 +355,12 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
         override fun fromResponse(reader: ResponseReader, __typename: String?):
             TestQuery.Data.Hero.OtherHero.FriendsConnection {
           return reader.run {
-            var edges: List<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge?>? = null
+            var edges: List<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges?>? = null
             while(true) {
               when (selectField(RESPONSE_FIELDS)) {
-                0 -> edges = readList<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge>(RESPONSE_FIELDS[0]) { reader ->
-                  reader.readObject<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge> { reader ->
-                    Edge.fromResponse(reader)
+                0 -> edges = readList<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges>(RESPONSE_FIELDS[0]) { reader ->
+                  reader.readObject<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges> { reader ->
+                    Edges.fromResponse(reader)
                   }
                 }
                 else -> break
@@ -376,12 +376,12 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
             value: TestQuery.Data.Hero.OtherHero.FriendsConnection) {
           writer.writeList(RESPONSE_FIELDS[0], value.edges) { value, listItemWriter ->
             listItemWriter.writeObject { writer ->
-              Edge.toResponse(writer, value)
+              Edges.toResponse(writer, value)
             }
           }
         }
 
-        object Edge : ResponseAdapter<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge> {
+        object Edges : ResponseAdapter<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges> {
           private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
             ResponseField(
               type = ResponseField.Type.Named.Object("Character"),
@@ -393,25 +393,25 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
           )
 
           override fun fromResponse(reader: ResponseReader, __typename: String?):
-              TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge {
+              TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges {
             return reader.run {
-              var node: TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge.Node? = null
+              var node: TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges.Node? = null
               while(true) {
                 when (selectField(RESPONSE_FIELDS)) {
-                  0 -> node = readObject<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge.Node>(RESPONSE_FIELDS[0]) { reader ->
+                  0 -> node = readObject<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges.Node>(RESPONSE_FIELDS[0]) { reader ->
                     Node.fromResponse(reader)
                   }
                   else -> break
                 }
               }
-              TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge(
+              TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges(
                 node = node
               )
             }
           }
 
           override fun toResponse(writer: ResponseWriter,
-              value: TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge) {
+              value: TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges) {
             if(value.node == null) {
               writer.writeObject(RESPONSE_FIELDS[0], null)
             } else {
@@ -421,7 +421,8 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
             }
           }
 
-          object Node : ResponseAdapter<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge.Node> {
+          object Node : ResponseAdapter<TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges.Node>
+              {
             private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
               ResponseField(
                 type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("String")),
@@ -433,7 +434,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
             )
 
             override fun fromResponse(reader: ResponseReader, __typename: String?):
-                TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge.Node {
+                TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges.Node {
               return reader.run {
                 var name: String? = null
                 while(true) {
@@ -442,14 +443,14 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
                     else -> break
                   }
                 }
-                TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge.Node(
+                TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges.Node(
                   name = name!!
                 )
               }
             }
 
             override fun toResponse(writer: ResponseWriter,
-                value: TestQuery.Data.Hero.OtherHero.FriendsConnection.Edge.Node) {
+                value: TestQuery.Data.Hero.OtherHero.FriendsConnection.Edges.Node) {
               writer.writeString(RESPONSE_FIELDS[0], value.name)
             }
           }

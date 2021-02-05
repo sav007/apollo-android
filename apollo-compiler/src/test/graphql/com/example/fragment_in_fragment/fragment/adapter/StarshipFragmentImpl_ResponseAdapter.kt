@@ -104,12 +104,12 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
     override fun fromResponse(reader: ResponseReader, __typename: String?):
         StarshipFragmentImpl.Data.PilotConnection {
       return reader.run {
-        var edges: List<StarshipFragmentImpl.Data.PilotConnection.Edge?>? = null
+        var edges: List<StarshipFragmentImpl.Data.PilotConnection.Edges?>? = null
         while(true) {
           when (selectField(RESPONSE_FIELDS)) {
-            0 -> edges = readList<StarshipFragmentImpl.Data.PilotConnection.Edge>(RESPONSE_FIELDS[0]) { reader ->
-              reader.readObject<StarshipFragmentImpl.Data.PilotConnection.Edge> { reader ->
-                Edge.fromResponse(reader)
+            0 -> edges = readList<StarshipFragmentImpl.Data.PilotConnection.Edges>(RESPONSE_FIELDS[0]) { reader ->
+              reader.readObject<StarshipFragmentImpl.Data.PilotConnection.Edges> { reader ->
+                Edges.fromResponse(reader)
               }
             }
             else -> break
@@ -125,12 +125,12 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
         value: StarshipFragmentImpl.Data.PilotConnection) {
       writer.writeList(RESPONSE_FIELDS[0], value.edges) { value, listItemWriter ->
         listItemWriter.writeObject { writer ->
-          Edge.toResponse(writer, value)
+          Edges.toResponse(writer, value)
         }
       }
     }
 
-    object Edge : ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge> {
+    object Edges : ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges> {
       private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
         ResponseField(
           type = ResponseField.Type.Named.Object("Person"),
@@ -142,25 +142,25 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
       )
 
       override fun fromResponse(reader: ResponseReader, __typename: String?):
-          StarshipFragmentImpl.Data.PilotConnection.Edge {
+          StarshipFragmentImpl.Data.PilotConnection.Edges {
         return reader.run {
-          var node: StarshipFragmentImpl.Data.PilotConnection.Edge.Node? = null
+          var node: StarshipFragmentImpl.Data.PilotConnection.Edges.Node? = null
           while(true) {
             when (selectField(RESPONSE_FIELDS)) {
-              0 -> node = readObject<StarshipFragmentImpl.Data.PilotConnection.Edge.Node>(RESPONSE_FIELDS[0]) { reader ->
+              0 -> node = readObject<StarshipFragmentImpl.Data.PilotConnection.Edges.Node>(RESPONSE_FIELDS[0]) { reader ->
                 Node.fromResponse(reader)
               }
               else -> break
             }
           }
-          StarshipFragmentImpl.Data.PilotConnection.Edge(
+          StarshipFragmentImpl.Data.PilotConnection.Edges(
             node = node
           )
         }
       }
 
       override fun toResponse(writer: ResponseWriter,
-          value: StarshipFragmentImpl.Data.PilotConnection.Edge) {
+          value: StarshipFragmentImpl.Data.PilotConnection.Edges) {
         if(value.node == null) {
           writer.writeObject(RESPONSE_FIELDS[0], null)
         } else {
@@ -170,7 +170,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
         }
       }
 
-      object Node : ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge.Node> {
+      object Node : ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges.Node> {
         private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
           ResponseField(
             type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("String")),
@@ -182,7 +182,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
         )
 
         override fun fromResponse(reader: ResponseReader, __typename: String?):
-            StarshipFragmentImpl.Data.PilotConnection.Edge.Node {
+            StarshipFragmentImpl.Data.PilotConnection.Edges.Node {
           val typename = __typename ?: reader.readString(RESPONSE_FIELDS[0])
           return when(typename) {
             "Person" -> PersonNode.fromResponse(reader, typename)
@@ -191,15 +191,15 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
         }
 
         override fun toResponse(writer: ResponseWriter,
-            value: StarshipFragmentImpl.Data.PilotConnection.Edge.Node) {
+            value: StarshipFragmentImpl.Data.PilotConnection.Edges.Node) {
           when(value) {
-            is StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode -> PersonNode.toResponse(writer, value)
-            is StarshipFragmentImpl.Data.PilotConnection.Edge.Node.OtherNode -> OtherNode.toResponse(writer, value)
+            is StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode -> PersonNode.toResponse(writer, value)
+            is StarshipFragmentImpl.Data.PilotConnection.Edges.Node.OtherNode -> OtherNode.toResponse(writer, value)
           }
         }
 
         object PersonNode :
-            ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode> {
+            ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode> {
           private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
             ResponseField(
               type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("String")),
@@ -225,22 +225,22 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
           )
 
           override fun fromResponse(reader: ResponseReader, __typename: String?):
-              StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode {
+              StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode {
             return reader.run {
               var __typename: String? = __typename
               var name: String? = null
-              var homeworld: StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld? = null
+              var homeworld: StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld? = null
               while(true) {
                 when (selectField(RESPONSE_FIELDS)) {
                   0 -> __typename = readString(RESPONSE_FIELDS[0])
                   1 -> name = readString(RESPONSE_FIELDS[1])
-                  2 -> homeworld = readObject<StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld>(RESPONSE_FIELDS[2]) { reader ->
+                  2 -> homeworld = readObject<StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld>(RESPONSE_FIELDS[2]) { reader ->
                     Homeworld.fromResponse(reader)
                   }
                   else -> break
                 }
               }
-              StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode(
+              StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode(
                 __typename = __typename!!,
                 name = name,
                 homeworld = homeworld
@@ -249,7 +249,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
           }
 
           override fun toResponse(writer: ResponseWriter,
-              value: StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode) {
+              value: StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode) {
             writer.writeString(RESPONSE_FIELDS[0], value.__typename)
             writer.writeString(RESPONSE_FIELDS[1], value.name)
             if(value.homeworld == null) {
@@ -262,7 +262,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
           }
 
           object Homeworld :
-              ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld>
+              ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld>
               {
             private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
               ResponseField(
@@ -275,7 +275,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
             )
 
             override fun fromResponse(reader: ResponseReader, __typename: String?):
-                StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld {
+                StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld {
               val typename = __typename ?: reader.readString(RESPONSE_FIELDS[0])
               return when(typename) {
                 "Planet" -> PlanetHomeworld.fromResponse(reader, typename)
@@ -284,15 +284,15 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
             }
 
             override fun toResponse(writer: ResponseWriter,
-                value: StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld) {
+                value: StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld) {
               when(value) {
-                is StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.PlanetHomeworld -> PlanetHomeworld.toResponse(writer, value)
-                is StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.OtherHomeworld -> OtherHomeworld.toResponse(writer, value)
+                is StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.PlanetHomeworld -> PlanetHomeworld.toResponse(writer, value)
+                is StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.OtherHomeworld -> OtherHomeworld.toResponse(writer, value)
               }
             }
 
             object PlanetHomeworld :
-                ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.PlanetHomeworld>
+                ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.PlanetHomeworld>
                 {
               private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
                 ResponseField(
@@ -312,7 +312,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
               )
 
               override fun fromResponse(reader: ResponseReader, __typename: String?):
-                  StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.PlanetHomeworld {
+                  StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.PlanetHomeworld {
                 return reader.run {
                   var __typename: String? = __typename
                   var name: String? = null
@@ -323,7 +323,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
                       else -> break
                     }
                   }
-                  StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.PlanetHomeworld(
+                  StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.PlanetHomeworld(
                     __typename = __typename!!,
                     name = name
                   )
@@ -331,14 +331,14 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
               }
 
               override fun toResponse(writer: ResponseWriter,
-                  value: StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.PlanetHomeworld) {
+                  value: StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.PlanetHomeworld) {
                 writer.writeString(RESPONSE_FIELDS[0], value.__typename)
                 writer.writeString(RESPONSE_FIELDS[1], value.name)
               }
             }
 
             object OtherHomeworld :
-                ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.OtherHomeworld>
+                ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.OtherHomeworld>
                 {
               private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
                 ResponseField(
@@ -351,7 +351,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
               )
 
               override fun fromResponse(reader: ResponseReader, __typename: String?):
-                  StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.OtherHomeworld {
+                  StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.OtherHomeworld {
                 return reader.run {
                   var __typename: String? = __typename
                   while(true) {
@@ -360,14 +360,14 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
                       else -> break
                     }
                   }
-                  StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.OtherHomeworld(
+                  StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.OtherHomeworld(
                     __typename = __typename!!
                   )
                 }
               }
 
               override fun toResponse(writer: ResponseWriter,
-                  value: StarshipFragmentImpl.Data.PilotConnection.Edge.Node.PersonNode.Homeworld.OtherHomeworld) {
+                  value: StarshipFragmentImpl.Data.PilotConnection.Edges.Node.PersonNode.Homeworld.OtherHomeworld) {
                 writer.writeString(RESPONSE_FIELDS[0], value.__typename)
               }
             }
@@ -375,7 +375,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
         }
 
         object OtherNode :
-            ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edge.Node.OtherNode> {
+            ResponseAdapter<StarshipFragmentImpl.Data.PilotConnection.Edges.Node.OtherNode> {
           private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
             ResponseField(
               type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("String")),
@@ -387,7 +387,7 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
           )
 
           override fun fromResponse(reader: ResponseReader, __typename: String?):
-              StarshipFragmentImpl.Data.PilotConnection.Edge.Node.OtherNode {
+              StarshipFragmentImpl.Data.PilotConnection.Edges.Node.OtherNode {
             return reader.run {
               var __typename: String? = __typename
               while(true) {
@@ -396,14 +396,14 @@ object StarshipFragmentImpl_ResponseAdapter : ResponseAdapter<StarshipFragmentIm
                   else -> break
                 }
               }
-              StarshipFragmentImpl.Data.PilotConnection.Edge.Node.OtherNode(
+              StarshipFragmentImpl.Data.PilotConnection.Edges.Node.OtherNode(
                 __typename = __typename!!
               )
             }
           }
 
           override fun toResponse(writer: ResponseWriter,
-              value: StarshipFragmentImpl.Data.PilotConnection.Edge.Node.OtherNode) {
+              value: StarshipFragmentImpl.Data.PilotConnection.Edges.Node.OtherNode) {
             writer.writeString(RESPONSE_FIELDS[0], value.__typename)
           }
         }

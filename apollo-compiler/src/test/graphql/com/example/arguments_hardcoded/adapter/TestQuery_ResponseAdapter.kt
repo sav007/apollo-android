@@ -49,13 +49,13 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
 
   override fun fromResponse(reader: ResponseReader, __typename: String?): TestQuery.Data {
     return reader.run {
-      var reviews: List<TestQuery.Data.Review?>? = null
+      var reviews: List<TestQuery.Data.Reviews?>? = null
       var testNullableArguments: Int? = null
       while(true) {
         when (selectField(RESPONSE_FIELDS)) {
-          0 -> reviews = readList<TestQuery.Data.Review>(RESPONSE_FIELDS[0]) { reader ->
-            reader.readObject<TestQuery.Data.Review> { reader ->
-              Review.fromResponse(reader)
+          0 -> reviews = readList<TestQuery.Data.Reviews>(RESPONSE_FIELDS[0]) { reader ->
+            reader.readObject<TestQuery.Data.Reviews> { reader ->
+              Reviews.fromResponse(reader)
             }
           }
           1 -> testNullableArguments = readInt(RESPONSE_FIELDS[1])
@@ -72,13 +72,13 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
   override fun toResponse(writer: ResponseWriter, value: TestQuery.Data) {
     writer.writeList(RESPONSE_FIELDS[0], value.reviews) { value, listItemWriter ->
       listItemWriter.writeObject { writer ->
-        Review.toResponse(writer, value)
+        Reviews.toResponse(writer, value)
       }
     }
     writer.writeInt(RESPONSE_FIELDS[1], value.testNullableArguments)
   }
 
-  object Review : ResponseAdapter<TestQuery.Data.Review> {
+  object Reviews : ResponseAdapter<TestQuery.Data.Reviews> {
     private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
       ResponseField(
         type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("Int")),
@@ -96,7 +96,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
       )
     )
 
-    override fun fromResponse(reader: ResponseReader, __typename: String?): TestQuery.Data.Review {
+    override fun fromResponse(reader: ResponseReader, __typename: String?): TestQuery.Data.Reviews {
       return reader.run {
         var stars: Int? = null
         var commentary: String? = null
@@ -107,14 +107,14 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
             else -> break
           }
         }
-        TestQuery.Data.Review(
+        TestQuery.Data.Reviews(
           stars = stars!!,
           commentary = commentary
         )
       }
     }
 
-    override fun toResponse(writer: ResponseWriter, value: TestQuery.Data.Review) {
+    override fun toResponse(writer: ResponseWriter, value: TestQuery.Data.Reviews) {
       writer.writeInt(RESPONSE_FIELDS[0], value.stars)
       writer.writeString(RESPONSE_FIELDS[1], value.commentary)
     }

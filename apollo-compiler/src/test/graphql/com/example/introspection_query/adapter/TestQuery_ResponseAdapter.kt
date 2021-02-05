@@ -91,15 +91,15 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
         TestQuery.Data.__Schema {
       return reader.run {
         var queryType: TestQuery.Data.__Schema.QueryType? = null
-        var types: List<TestQuery.Data.__Schema.Type>? = null
+        var types: List<TestQuery.Data.__Schema.Types>? = null
         while(true) {
           when (selectField(RESPONSE_FIELDS)) {
             0 -> queryType = readObject<TestQuery.Data.__Schema.QueryType>(RESPONSE_FIELDS[0]) { reader ->
               QueryType.fromResponse(reader)
             }
-            1 -> types = readList<TestQuery.Data.__Schema.Type>(RESPONSE_FIELDS[1]) { reader ->
-              reader.readObject<TestQuery.Data.__Schema.Type> { reader ->
-                Type.fromResponse(reader)
+            1 -> types = readList<TestQuery.Data.__Schema.Types>(RESPONSE_FIELDS[1]) { reader ->
+              reader.readObject<TestQuery.Data.__Schema.Types> { reader ->
+                Types.fromResponse(reader)
               }
             }?.map { it!! }
             else -> break
@@ -118,7 +118,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
       }
       writer.writeList(RESPONSE_FIELDS[1], value.types) { value, listItemWriter ->
         listItemWriter.writeObject { writer ->
-          Type.toResponse(writer, value)
+          Types.toResponse(writer, value)
         }
       }
     }
@@ -155,7 +155,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
       }
     }
 
-    object Type : ResponseAdapter<TestQuery.Data.__Schema.Type> {
+    object Types : ResponseAdapter<TestQuery.Data.__Schema.Types> {
       private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
         ResponseField(
           type = ResponseField.Type.Named.Other("String"),
@@ -167,7 +167,7 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
       )
 
       override fun fromResponse(reader: ResponseReader, __typename: String?):
-          TestQuery.Data.__Schema.Type {
+          TestQuery.Data.__Schema.Types {
         return reader.run {
           var name: String? = null
           while(true) {
@@ -176,13 +176,13 @@ object TestQuery_ResponseAdapter : ResponseAdapter<TestQuery.Data> {
               else -> break
             }
           }
-          TestQuery.Data.__Schema.Type(
+          TestQuery.Data.__Schema.Types(
             name = name
           )
         }
       }
 
-      override fun toResponse(writer: ResponseWriter, value: TestQuery.Data.__Schema.Type) {
+      override fun toResponse(writer: ResponseWriter, value: TestQuery.Data.__Schema.Types) {
         writer.writeString(RESPONSE_FIELDS[0], value.name)
       }
     }

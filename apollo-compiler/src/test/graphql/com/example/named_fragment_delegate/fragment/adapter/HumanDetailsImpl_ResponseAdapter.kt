@@ -100,12 +100,12 @@ object HumanDetailsImpl_ResponseAdapter : ResponseAdapter<HumanDetailsImpl.Data>
     override fun fromResponse(reader: ResponseReader, __typename: String?):
         HumanDetailsImpl.Data.FriendsConnection {
       return reader.run {
-        var edges: List<HumanDetailsImpl.Data.FriendsConnection.Edge?>? = null
+        var edges: List<HumanDetailsImpl.Data.FriendsConnection.Edges?>? = null
         while(true) {
           when (selectField(RESPONSE_FIELDS)) {
-            0 -> edges = readList<HumanDetailsImpl.Data.FriendsConnection.Edge>(RESPONSE_FIELDS[0]) { reader ->
-              reader.readObject<HumanDetailsImpl.Data.FriendsConnection.Edge> { reader ->
-                Edge.fromResponse(reader)
+            0 -> edges = readList<HumanDetailsImpl.Data.FriendsConnection.Edges>(RESPONSE_FIELDS[0]) { reader ->
+              reader.readObject<HumanDetailsImpl.Data.FriendsConnection.Edges> { reader ->
+                Edges.fromResponse(reader)
               }
             }
             else -> break
@@ -121,12 +121,12 @@ object HumanDetailsImpl_ResponseAdapter : ResponseAdapter<HumanDetailsImpl.Data>
         value: HumanDetailsImpl.Data.FriendsConnection) {
       writer.writeList(RESPONSE_FIELDS[0], value.edges) { value, listItemWriter ->
         listItemWriter.writeObject { writer ->
-          Edge.toResponse(writer, value)
+          Edges.toResponse(writer, value)
         }
       }
     }
 
-    object Edge : ResponseAdapter<HumanDetailsImpl.Data.FriendsConnection.Edge> {
+    object Edges : ResponseAdapter<HumanDetailsImpl.Data.FriendsConnection.Edges> {
       private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
         ResponseField(
           type = ResponseField.Type.Named.Object("Character"),
@@ -138,25 +138,25 @@ object HumanDetailsImpl_ResponseAdapter : ResponseAdapter<HumanDetailsImpl.Data>
       )
 
       override fun fromResponse(reader: ResponseReader, __typename: String?):
-          HumanDetailsImpl.Data.FriendsConnection.Edge {
+          HumanDetailsImpl.Data.FriendsConnection.Edges {
         return reader.run {
-          var node: HumanDetailsImpl.Data.FriendsConnection.Edge.Node? = null
+          var node: HumanDetailsImpl.Data.FriendsConnection.Edges.Node? = null
           while(true) {
             when (selectField(RESPONSE_FIELDS)) {
-              0 -> node = readObject<HumanDetailsImpl.Data.FriendsConnection.Edge.Node>(RESPONSE_FIELDS[0]) { reader ->
+              0 -> node = readObject<HumanDetailsImpl.Data.FriendsConnection.Edges.Node>(RESPONSE_FIELDS[0]) { reader ->
                 Node.fromResponse(reader)
               }
               else -> break
             }
           }
-          HumanDetailsImpl.Data.FriendsConnection.Edge(
+          HumanDetailsImpl.Data.FriendsConnection.Edges(
             node = node
           )
         }
       }
 
       override fun toResponse(writer: ResponseWriter,
-          value: HumanDetailsImpl.Data.FriendsConnection.Edge) {
+          value: HumanDetailsImpl.Data.FriendsConnection.Edges) {
         if(value.node == null) {
           writer.writeObject(RESPONSE_FIELDS[0], null)
         } else {
@@ -166,7 +166,7 @@ object HumanDetailsImpl_ResponseAdapter : ResponseAdapter<HumanDetailsImpl.Data>
         }
       }
 
-      object Node : ResponseAdapter<HumanDetailsImpl.Data.FriendsConnection.Edge.Node> {
+      object Node : ResponseAdapter<HumanDetailsImpl.Data.FriendsConnection.Edges.Node> {
         private val RESPONSE_FIELDS: Array<ResponseField> = arrayOf(
           ResponseField(
             type = ResponseField.Type.NotNull(ResponseField.Type.Named.Other("String")),
@@ -178,7 +178,7 @@ object HumanDetailsImpl_ResponseAdapter : ResponseAdapter<HumanDetailsImpl.Data>
         )
 
         override fun fromResponse(reader: ResponseReader, __typename: String?):
-            HumanDetailsImpl.Data.FriendsConnection.Edge.Node {
+            HumanDetailsImpl.Data.FriendsConnection.Edges.Node {
           return reader.run {
             var name: String? = null
             while(true) {
@@ -187,14 +187,14 @@ object HumanDetailsImpl_ResponseAdapter : ResponseAdapter<HumanDetailsImpl.Data>
                 else -> break
               }
             }
-            HumanDetailsImpl.Data.FriendsConnection.Edge.Node(
+            HumanDetailsImpl.Data.FriendsConnection.Edges.Node(
               name = name!!
             )
           }
         }
 
         override fun toResponse(writer: ResponseWriter,
-            value: HumanDetailsImpl.Data.FriendsConnection.Edge.Node) {
+            value: HumanDetailsImpl.Data.FriendsConnection.Edges.Node) {
           writer.writeString(RESPONSE_FIELDS[0], value.name)
         }
       }
